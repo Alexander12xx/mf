@@ -862,69 +862,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   
-  <!-- Sponsors Section -->
-  <section id="sponsors" class="py-16 bg-white dark:bg-dark">
-    <div class="container mx-auto px-4">
-      <!--<h2 class="text-3xl font-bold text-center mb-12 reveal-from-bottom">Our Sponsors</h2>-->
-      
-      <div class="sponsor-slider max-w-5xl mx-auto reveal-from-bottom">
-        <div class="slides">
-          <!-- Slide 1 -->
-          <a href="https://altechit.netlify.app/" target="_blank"><div class="slide">
-            <div class="sponsor-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow">
-              <img src="https://th.bing.com/th/id/R.ccb2cad24e4499edf0d2e61de290b60f?rik=BmaTiwt1dL5J8w&pid=ImgRaw&r=0" alt="Sponsor 1" class="h-32 mx-auto mb-4 object-contain">
-              <h3 class="text-xl font-semibold text-center">Need a website?</h3>
-              <p class="text-center text-gray-600 dark:text-gray-400">Contact Altech Solutions for a professional website</p>
-            </div>
-          </div></a>
-          
-          <!-- Slide 2 -->
-         <a href="https://quickfix1.netlify.app/" target="_blank"> <div class="slide">
-            <div class="sponsor-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow">
-              <img src="https://th.bing.com/th/id/OIP.UrLFJhkAWYVPYUli-lgQ1gHaEK?w=330&h=186&c=7&r=0&o=7&pid=1.7&rm=3" alt="Sponsor 2" class="h-32 mx-auto mb-4 object-contain">
-              <h3 class="text-xl font-semibold text-center">Looking for professional phone repair services?</h3>
-              <p class="text-center text-gray-600 dark:text-gray-400">Reach out</p>
-            </div>
-          </div></a>
-          
-          <!-- Slide 3 -->
-         <a href="https://altechit.netlify.app/" target="_blank"> <div class="slide">
-            <div class="sponsor-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow">
-              <img src="https://tse2.mm.bing.net/th/id/OIP.xFaQ4wqH6rzEVGB1CYnCRgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sponsor 3" class="h-32 mx-auto mb-4 object-contain">
-              <h3 class="text-xl font-semibold text-center">For weather updates</h3>
-              <p class="text-center text-gray-600 dark:text-gray-400">Check out</p>
-            </div>
-          </div></a>
-          
-          <!-- Slide 4 (Video Example) -->
-          <a href="https://altechit.netlify.app/" target="_blank"><div class="slide">
-            <div class="sponsor-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow">
-              <video class="sponsor-video h-32 mx-auto mb-4 object-contain" muted loop>
-                <source src="https://www.bing.com/videos/riverview/relatedvideo?q=video+editing+short+clips&&mid=B1F9080202E62FE810B1B1F9080202E62FE810B1&&mmscn=stvo&mcid=7C2B6685695D43CEBB5A34BB3838A3DB&FORM=VRDGAR" type="video/mp4">
-                Your browser does not support video playback.
-              </video>
-              <h3 class="text-xl font-semibold text-center">For video Solutions</h3>
-              <p class="text-center text-gray-600 dark:text-gray-400">Click here</p>
-            </div>
-          </div>
-        </div></a>
-        
-        <button class="sponsor-prev" aria-label="Previous slide">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="sponsor-next" aria-label="Next slide">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-        
-        <div class="dots"></div>
+  <!--Sponsors Section-->
+<section id="sponsors" class="py-16 bg-white dark:bg-dark text-gray-800 dark:text-white">
+  <div class="container mx-auto px-4">
+   <!-- <h2 class="text-3xl font-bold text-center mb-12">🎯 Our Sponsors</h2>-->
+
+<section id="sponsors" style="padding:4rem 0; background:#fff; color:#1f2937; text-align:center;">
+  <div style="max-width:600px; margin:0 auto; position:relative;">
+
+
+    <div class="sponsor-slide" style="position:relative; height:300px;">
+
+      <!-- Slide 1 -->
+      <div class="sponsor" style="position:absolute; inset:0; opacity:1; transition:opacity 1s ease;">
+        <img src="https://th.bing.com/th/id/R.ccb2cad24e4499edf0d2e61de290b60f?rik=BmaTiwt1dL5J8w&pid=ImgRaw&r=0" alt="Sponsor 1" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+        <h3 style="font-size:1.25rem; font-weight:600;">Need a website?</h3>
+        <p style="color:#6b7280;">Contact Altech Solutions for a professional website</p>
       </div>
-      
-      <div class="text-center mt-10 reveal-from-bottom">
+
+      <!-- Slide 2 -->
+      <div class="sponsor" style="position:absolute; inset:0; opacity:0; transition:opacity 1s ease;">
+        <img src="https://th.bing.com/th/id/OIP.UrLFJhkAWYVPYUli-lgQ1gHaEK?w=330&h=186&c=7&r=0&o=7&pid=1.7&rm=3" alt="Sponsor 2" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+        <h3 style="font-size:1.25rem; font-weight:600;">Looking for phone repair?</h3>
+        <p style="color:#6b7280;">Reach out to QuickFix</p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="sponsor" style="position:absolute; inset:0; opacity:0; transition:opacity 1s ease;">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.xFaQ4wqH6rzEVGB1CYnCRgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sponsor 3" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+        <h3 style="font-size:1.25rem; font-weight:600;">For Weather Updates</h3>
+        <p style="color:#6b7280;">Check out Altech Weather</p>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="sponsor" style="position:absolute; inset:0; opacity:0; transition:opacity 1s ease;">
+        <img src="images/WhatsApp Image 2025-07-15 at 9.30.32 PM.jpeg" alt="Lions Paw Entertainment" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+        <h3 style="font-size:1.25rem; font-weight:600;">For Events & Parties</h3>
+        <p style="color:#6b7280;">Lions Paw Entertainment</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="text-center mt-10 reveal-from-bottom">
         <p class="text-lg">Interested in becoming a sponsor?</p>
         <a href="#join-community" class="inline-block mt-2 text-primary dark:text-primary-light font-medium hover:underline">Contact Us</a>
       </div>
     </div>
-  </section>
+</section>
+
+<script>
+const slides = document.querySelectorAll('#sponsors .sponsor');
+let current = 0;
+
+setInterval(() => {
+  slides[current].style.opacity = '0';
+  current = (current + 1) % slides.length;
+  slides[current].style.opacity = '1';
+}, 4000);
+</script>
+
   
   <!-- Sign Up Section -->
  <!-- 🌟 Join Our Community Section -->
@@ -1227,184 +1224,7 @@ displayMatches();
 
 
     
-    
-    // Create slider content
-    function createSlider() {
-      sliderContainer.innerHTML = '';
-      liveMatches.forEach((match, index) => {
-        const slide = document.createElement('div');
-        slide.className = `highlight-card min-w-[250px] md:min-w-[320px] bg-white dark:bg-gray-800 rounded-lg shadow-lg mx-3 flex-shrink-0`;
-        slide.innerHTML = `
-          <div class="relative overflow-hidden rounded-t-lg">
-            <img src="${match.thumbnail}" alt="${match.title}" class="w-full h-48 object-cover">
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-              <p class="text-white font-semibold">${match.league}</p>
-              <p class="text-white text-lg">${match.score}</p>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold line-clamp-2">${match.title}</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-sm mt-2">Live Now</p>
-          </div>
-        `;
-        sliderContainer.appendChild(slide);
-      });
-    }
-    
-    createSlider();
-    
-    // Slider controls
-    function updateSlider() {
-      const slideWidth = document.querySelector('.highlight-card').offsetWidth + 24; // width + margin
-      sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-    }
-    
-    sliderPrev.addEventListener('click', () => {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateSlider();
-      }
-    });
-    
-    sliderNext.addEventListener('click', () => {
-      if (currentSlide < liveMatches.length - 1) {
-        currentSlide++;
-        updateSlider();
-      }
-    });
-    
-    // WhatsApp Form Submission
-
-
-
-    // Handle responsive design for slider
-    window.addEventListener('resize', updateSlider);
-    
-    // Sponsor Slider
-    function initSponsorSlider() {
-      const slider = document.querySelector('.sponsor-slider');
-      if (!slider) return;
-      
-      const slidesContainer = slider.querySelector('.slides');
-      const slides = Array.from(slider.querySelectorAll('.slide'));
-      const prevBtn = slider.querySelector('.sponsor-prev');
-      const nextBtn = slider.querySelector('.sponsor-next');
-      const dotsContainer = slider.querySelector('.dots');
-      
-      let currentIndex = 0;
-      let slideInterval;
-      const slideCount = slides.length;
-      const isDesktop = window.innerWidth >= 768;
-      const visibleSlides = isDesktop ? 3 : 1;
-      
-      // Create pagination dots
-      slides.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => showSlide(i));
-        dotsContainer.appendChild(dot);
-      });
-      
-      // Handle video elements
-      const videos = slider.querySelectorAll('.sponsor-video');
-      
-      function showSlide(index) {
-        // Handle index bounds
-        if (index < 0) index = slideCount - 1;
-        if (index >= slideCount) index = 0;
-        
-        currentIndex = index;
-        
-        // Calculate position based on visible slides
-        const slideWidth = slides[0].offsetWidth;
-        let translateX;
-        
-        if (isDesktop) {
-          // On desktop, we show 3 slides at once, centered on the current one
-          translateX = -((currentIndex * slideWidth) - (slideWidth * (visibleSlides - 1) / 2));
-          
-          // Don't move too far at the beginning or end
-          if (currentIndex < Math.floor(visibleSlides / 2)) {
-            translateX = 0;
-          } else if (currentIndex >= slideCount - Math.ceil(visibleSlides / 2)) {
-            translateX = -((slideCount - visibleSlides) * slideWidth);
-          }
-        } else {
-          // On mobile, just show the current slide
-          translateX = -(currentIndex * slideWidth);
-        }
-        
-        // Apply the transform
-        slidesContainer.style.transform = `translateX(${translateX}px)`;
-        
-        // Update active dot
-        Array.from(dotsContainer.children).forEach((dot, i) => {
-          dot.classList.toggle('active', i === currentIndex);
-        });
-        
-        // Handle videos - pause all and play current if visible
-        videos.forEach(video => {
-          video.pause();
-        });
-        
-        // Play video if it's in the current slide
-        const currentVideo = slides[currentIndex].querySelector('.sponsor-video');
-        if (currentVideo) {
-          currentVideo.play();
-        }
-      }
-      
-      // Set up controls
-      prevBtn.addEventListener('click', () => {
-        showSlide(currentIndex - 1);
-        resetInterval();
-      });
-      
-      nextBtn.addEventListener('click', () => {
-        showSlide(currentIndex + 1);
-        resetInterval();
-      });
-      
-      // Auto-advance slides every 5 seconds
-      function startInterval() {
-        slideInterval = setInterval(() => {
-          showSlide(currentIndex + 1);
-        }, 5000);
-      }
-      
-      function resetInterval() {
-        clearInterval(slideInterval);
-        startInterval();
-      }
-      
-      // Pause on hover
-      slider.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-      });
-      
-      slider.addEventListener('mouseleave', () => {
-        startInterval();
-      });
-      
-      // Handle window resize
-      window.addEventListener('resize', () => {
-        const newIsDesktop = window.innerWidth >= 768;
-        if (newIsDesktop !== isDesktop) {
-          location.reload(); // Simple solution - reload on breakpoint change
-        }
-        showSlide(currentIndex);
-      });
-      
-      // Initialize
-      showSlide(0);
-      startInterval();
-    }
-    
-    // Initialize the sponsor slider after the page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      initSponsorSlider();
-    });
+    //
   </script>
 </body>
 </html>
