@@ -8,12 +8,12 @@
   "description": "Empowering communities through the Mumo Foundation.",
   "icons": [
     {
-      "src": "images/icon-192.png.png",
+      "src": "images/mmf.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "images/icon-512.png.png",
+      "src": "images/mmf.png",
       "sizes": "512x512",
       "type": "image/png"
     }
