@@ -1331,28 +1331,44 @@ if ('serviceWorker' in navigator) {
     })
     .catch(err => console.error("Service Worker registration failed:", err));
 }
-let deferredPrompt;
+ //pop up
+ let deferredPrompt = null;
 
+// Listen for browser-triggered install event (if supported)
 window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
+  e.preventDefault(); // prevent default mini-infobar
   deferredPrompt = e;
-  document.getElementById('install-popup').style.display = 'block';
+  console.log('beforeinstallprompt captured');
 });
 
+// Always show popup proactively after a short delay
+setTimeout(() => {
+  // Optional: only on mobile
+  if (/Mobi|Android/i.test(navigator.userAgent)) {
+    document.getElementById('install-popup').style.display = 'block';
+  }
+}, 3000);
+
+// Handle "Get App" button
 document.getElementById('install-btn').addEventListener('click', () => {
   document.getElementById('install-popup').style.display = 'none';
+
   if (deferredPrompt) {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then(choiceResult => {
       console.log('User choice:', choiceResult.outcome);
       deferredPrompt = null;
     });
+  } else {
+    alert("Please use your browser’s menu to add this app to your Home Screen.");
   }
 });
 
+// Handle "Already Have It" button
 document.getElementById('dismiss-btn').addEventListener('click', () => {
   document.getElementById('install-popup').style.display = 'none';
 });
+
 
 
 
