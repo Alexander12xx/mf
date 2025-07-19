@@ -424,69 +424,7 @@
       max-width: 100%;
     }
 
-    #install-popup {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1976D2;
-  color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 1000;
-  width: 90%;
-  max-width: 400px;
-  padding: 15px;
-  font-family: Arial, sans-serif;
-  animation: slideUp 0.3s ease-in-out;
-}
-
-.install-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.install-text strong {
-  font-size: 16px;
-}
-
-.install-text p {
-  margin: 5px 0 0;
-  font-size: 14px;
-}
-
-.install-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.install-btn {
-  border: none;
-  padding: 6px 12px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.install-primary {
-  background: #fff;
-  color: #1976D2;
-  font-weight: bold;
-}
-
-.install-secondary {
-  background: transparent;
-  color: #fff;
-  border: 1px solid #fff;
-}
-
-@keyframes slideUp {
-  from { transform: translate(-50%, 100%); opacity: 0; }
-  to { transform: translate(-50%, 0); opacity: 1; }
-}
-
+ 
   </style>
 </head>
 <body class="bg-light dark:bg-dark text-dark dark:text-light transition-colors duration-300">
@@ -1332,23 +1270,68 @@ if ('serviceWorker' in navigator) {
     .catch(err => console.error("Service Worker registration failed:", err));
 }
  //pop up
- let deferredPrompt = null;
+ 
+
+
+
+</script>
+<!-- Popup Modal -->
+ <div id="install-popup" style="
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1976D2;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  width: 90%;
+  max-width: 400px;
+  padding: 15px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+">
+  <div style="margin-bottom: 10px;">
+    <strong>Get the Mumo Foundation App</strong>
+    <p style="margin: 5px 0 0;">Install the app for a better experience!</p>
+  </div>
+  <button id="install-btn" style="
+    background: #fff;
+    color: #1976D2;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+  ">Get App</button>
+  <button id="dismiss-btn" style="
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  ">Already Have It</button>
+</div>
+
+<script>
+let deferredPrompt = null;
 
 // Listen for browser-triggered install event (if supported)
 window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); // prevent default mini-infobar
+  e.preventDefault();
   deferredPrompt = e;
   console.log('beforeinstallprompt captured');
 });
 
-// Always show popup proactively after a short delay
+// Show popup after short delay
 setTimeout(() => {
-  if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    document.getElementById('install-popup').style.display = 'block';
-  }
+  document.getElementById('install-popup').style.display = 'block';
 }, 3000);
 
-// Handle "Get App" button
+// Handle Get App button
 document.getElementById('install-btn').addEventListener('click', () => {
   document.getElementById('install-popup').style.display = 'none';
 
@@ -1359,31 +1342,16 @@ document.getElementById('install-btn').addEventListener('click', () => {
       deferredPrompt = null;
     });
   } else {
-    alert("On your browser, open the menu and tap 'Add to Home Screen' to install the app.");
+    alert("On your device, open the browser menu and tap 'Add to Home Screen' to install.");
   }
 });
 
-// Handle "Already Have It" button
+// Handle Dismiss button
 document.getElementById('dismiss-btn').addEventListener('click', () => {
   document.getElementById('install-popup').style.display = 'none';
 });
-
-
-
-
 </script>
-<div id="install-popup" style="display:none;">
-  <div class="install-container">
-    <div class="install-text">
-      <strong>Get the Mumo Foundation App</strong>
-      <p>Install the app for a faster, better experience!</p>
-    </div>
-    <div class="install-actions">
-      <button id="install-btn" class="install-btn install-primary">Get App</button>
-      <button id="dismiss-btn" class="install-btn install-secondary">Already Have It</button>
-    </div>
-  </div>
-</div>
+
 
 </body>
 </html>
