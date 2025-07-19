@@ -4,8 +4,8 @@ const FILES_TO_CACHE = [
   '/index.html',
   '/styles.css',
   '/script.js',
-  '/icon-192.png',
-  '/icon-512.png'
+  '/mmf.png',
+  '/mmf.png'
 ];
 
 // Install: cache fresh files
