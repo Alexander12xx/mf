@@ -1,0 +1,21 @@
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; transition: background 0.3s, color 0.3s; }
+body.dark { background: #121212; color: #f1f1f1; }
+header { background: linear-gradient(45deg, #1abc9c, #2c3e50); color: white; text-align: center; padding: 4rem 1rem; }
+header .btn { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #fff; color: #2c3e50; font-weight: bold; border-radius: 5px; text-decoration: none; transition: 0.3s; }
+header .btn:hover { background: #1abc9c; color: white; }
+dark header .btn { background: #333; color: #fff; }
+section { padding: 2rem; text-align: center; }
+.stats { display: flex; justify-content: space-around; background: #eafaf7; }
+.stats div { font-size: 1.2rem; font-weight: bold; }
+.match-card, .ad-card { background: #fff; margin: 1rem auto; padding: 1rem; border-radius: 10px; width: 80%; box-shadow: 0 0 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.match-card:hover, .ad-card:hover { transform: scale(1.03); }
+.league-slider { display: flex; overflow-x: auto; gap: 1rem; padding: 1rem; }
+.league-slider div { min-width: 200px; background: #fff; padding: 1rem; border-radius: 5px; }
+table { margin: auto; border-collapse: collapse; width: 80%; }
+th, td { padding: 0.5rem 1rem; border-bottom: 1px solid #ddd; }
+.signup form { display: flex; flex-direction: column; gap: 1rem; width: 300px; margin: auto; }
+.signup input, .signup select, .signup button { padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; }
+.signup button { background: #1abc9c; color: white; border: none; cursor: pointer; transition: 0.3s; }
+.signup button:hover { background: #16a085; }
+footer { background: #2c3e50; color: white; text-align: center; padding: 1rem; }
+.dark .match-card, .dark .ad-card, .dark .league-slider div { background: #1e1e1e; color: #ddd; }
