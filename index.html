@@ -1343,8 +1343,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 // Always show popup proactively after a short delay
 setTimeout(() => {
-  // Optional: only on mobile
-  if (/Mobi|Android/i.test(navigator.userAgent)) {
+  if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
     document.getElementById('install-popup').style.display = 'block';
   }
 }, 3000);
@@ -1360,7 +1359,7 @@ document.getElementById('install-btn').addEventListener('click', () => {
       deferredPrompt = null;
     });
   } else {
-    alert("Please use your browser’s menu to add this app to your Home Screen.");
+    alert("On your browser, open the menu and tap 'Add to Home Screen' to install the app.");
   }
 });
 
