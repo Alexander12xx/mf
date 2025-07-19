@@ -1252,7 +1252,19 @@ displayMatches();
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
-    .then(() => console.log("Service Worker registered for Mumo Foundation."))
+    .then(reg => {
+      console.log("Service Worker registered for Mumo Foundation.");
+
+      // 🔷 Listen for updates
+      reg.onupdatefound = () => {
+        const newWorker = reg.installing;
+        newWorker.onstatechange = () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            alert('New content is available. Please reload or visit the website online to update.');
+          }
+        };
+      };
+    })
     .catch(err => console.error("Service Worker registration failed:", err));
 }
 
