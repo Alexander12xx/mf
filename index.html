@@ -1277,7 +1277,6 @@ if ('serviceWorker' in navigator) {
 </script>
 <!-- Popup Modal -->
 <style>
-/* Animation keyframes */
 @keyframes fadeSlideUp {
   0% {
     opacity: 0;
@@ -1361,11 +1360,13 @@ if ('serviceWorker' in navigator) {
 <script>
 let deferredPrompt = null;
 
+// Listen for install prompt
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
 });
 
+// Show popup
 window.addEventListener('load', () => {
   setTimeout(() => {
     const popup = document.getElementById('install-popup');
@@ -1387,26 +1388,29 @@ window.addEventListener('load', () => {
     setTimeout(() => {
       startAlternatingText();
     }, 1000);
-
   }, 3000);
 });
 
+// Get App button
 document.getElementById('install-btn').addEventListener('click', () => {
-  document.getElementById('install-popup').style.display = 'none';
+  const popup = document.getElementById('install-popup');
+  popup.style.display = 'none';
+
   if (deferredPrompt) {
     deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(choiceResult => {
+    deferredPrompt.userChoice.then(() => {
       deferredPrompt = null;
     });
-  } else {
-    alert("On your device, open the browser menu and tap 'Add to Home Screen' to install.");
   }
+  // If no deferredPrompt, just silently dismiss. Cannot force install on iOS.
 });
 
+// Already Have It button
 document.getElementById('dismiss-btn').addEventListener('click', () => {
   document.getElementById('install-popup').style.display = 'none';
 });
 
+// Alternating text
 function startAlternatingText() {
   const altech = document.getElementById('altech-text');
   const messages = [
@@ -1417,7 +1421,6 @@ function startAlternatingText() {
 
   setInterval(() => {
     altech.style.opacity = 0;
-
     setTimeout(() => {
       index = (index + 1) % messages.length;
       altech.textContent = messages[index].text;
