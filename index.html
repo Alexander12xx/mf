@@ -1054,7 +1054,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <i class="fab fa-whatsapp text-xl"></i>
         </a>
       </div>
-      <a href="https://altechit.netlify.app/" target="_blank"><p class="text-sm text-gray-400">Product of Altech software developers.</p></a>
+      <a href="https://altechit.netlify.app/" target="_blank"><p class="text-sm text-gray-400">Designed & Developed by Altech software developers.</p></a>
       <p class="text-sm text-gray-400">&copy; 2025 Mumo Foundation. All rights reserved.</p>
     </div>
   </footer>
@@ -1276,7 +1276,35 @@ if ('serviceWorker' in navigator) {
 
 </script>
 <!-- Popup Modal -->
- <div id="install-popup" style="
+<style>
+/* Animation keyframes */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-in {
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+.fade-text {
+  transition: opacity 0.6s ease;
+  cursor: default;
+}
+
+.fade-text.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+</style>
+
+<div id="install-popup" style="
   display: none;
   position: fixed;
   bottom: 20px;
@@ -1293,52 +1321,81 @@ if ('serviceWorker' in navigator) {
   font-family: Arial, sans-serif;
   text-align: center;
 ">
-  <div style="margin-bottom: 10px;">
+  <div id="altech-text" class="fade-text" style="
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+    opacity: 0;
+  ">ALTECH</div>
+
+  <div id="popup-content" style="
+    margin-bottom: 10px;
+    opacity: 0;
+  ">
     <strong>Get the Mumo Foundation App</strong>
     <p style="margin: 5px 0 0;">Install the app for a better experience!</p>
   </div>
-  <button id="install-btn" style="
-    background: #fff;
-    color: #1976D2;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    margin-right: 10px;
-    cursor: pointer;
-  ">Get App</button>
-  <button id="dismiss-btn" style="
-    background: transparent;
-    color: #fff;
-    border: 1px solid #fff;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-  ">Already Have It</button>
+
+  <div id="popup-buttons" style="opacity: 0;">
+    <button id="install-btn" style="
+      background: #fff;
+      color: #1976D2;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-right: 10px;
+      cursor: pointer;
+    ">Get App</button>
+
+    <button id="dismiss-btn" style="
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    ">Already Have It</button>
+  </div>
 </div>
 
 <script>
 let deferredPrompt = null;
 
-// Listen for browser-triggered install event (if supported)
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  console.log('beforeinstallprompt captured');
 });
 
-// Show popup after short delay
-setTimeout(() => {
-  document.getElementById('install-popup').style.display = 'block';
-}, 3000);
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const popup = document.getElementById('install-popup');
+    const altech = document.getElementById('altech-text');
+    const content = document.getElementById('popup-content');
+    const buttons = document.getElementById('popup-buttons');
 
-// Handle Get App button
+    popup.style.display = 'block';
+
+    altech.style.animationDelay = '0s';
+    altech.classList.add('animate-in');
+
+    content.style.animationDelay = '0.2s';
+    content.classList.add('animate-in');
+
+    buttons.style.animationDelay = '0.4s';
+    buttons.classList.add('animate-in');
+
+    setTimeout(() => {
+      startAlternatingText();
+    }, 1000);
+
+  }, 3000);
+});
+
 document.getElementById('install-btn').addEventListener('click', () => {
   document.getElementById('install-popup').style.display = 'none';
-
   if (deferredPrompt) {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then(choiceResult => {
-      console.log('User choice:', choiceResult.outcome);
       deferredPrompt = null;
     });
   } else {
@@ -1346,11 +1403,42 @@ document.getElementById('install-btn').addEventListener('click', () => {
   }
 });
 
-// Handle Dismiss button
 document.getElementById('dismiss-btn').addEventListener('click', () => {
   document.getElementById('install-popup').style.display = 'none';
 });
+
+function startAlternatingText() {
+  const altech = document.getElementById('altech-text');
+  const messages = [
+    { text: "ALTECH", link: false },
+    { text: "Need a Website or App? Click here", link: true }
+  ];
+  let index = 0;
+
+  setInterval(() => {
+    altech.style.opacity = 0;
+
+    setTimeout(() => {
+      index = (index + 1) % messages.length;
+      altech.textContent = messages[index].text;
+
+      if (messages[index].link) {
+        altech.classList.add('link');
+        altech.onclick = () => {
+          window.open('https://altechit.netlify.app', '_blank');
+        };
+      } else {
+        altech.classList.remove('link');
+        altech.onclick = null;
+      }
+
+      altech.style.opacity = 1;
+    }, 500);
+  }, 3000);
+}
 </script>
+
+
 
 
 </body>
