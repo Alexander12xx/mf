@@ -424,7 +424,134 @@
       max-width: 100%;
     }
 
- 
+    /* Pochi contribution styles */
+    .pochi-card {
+      background: linear-gradient(135deg, #1E5128 0%, #4E9F3D 100%);
+      border-radius: 20px;
+      padding: 30px;
+      color: white;
+      box-shadow: 0 10px 30px rgba(30, 81, 40, 0.3);
+    }
+    
+    .pochi-number {
+      background: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 15px 20px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .copy-btn {
+      background: white;
+      color: #1E5128;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .mpesa-btn {
+      background: #2b2b2b;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .mpesa-btn:hover {
+      background: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    
+    .team-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .team-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateX(5px);
+    }
+    
+    .team-number {
+      background: #4E9F3D;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .team-name {
+      font-weight: 500;
+      color: white;
+    }
+    
+    .tournament-badge {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #1E5128;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    
+    .toast-notification {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1E5128;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 500;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      z-index: 9999;
+      animation: slideUp 0.3s ease;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+    }
   </style>
 </head>
 <body class="bg-light dark:bg-dark text-dark dark:text-light transition-colors duration-300">
@@ -452,18 +579,96 @@
       
       <div class="stats-container flex justify-center items-center space-x-8 md:space-x-16 reveal-from-bottom">
         <div class="stat-item text-center">
-          <div class="count-up text-4xl md:text-5xl text-primary dark:text-primary-light" data-target="10">10</div>
+          <div class="count-up text-4xl md:text-5xl text-primary dark:text-primary-light" data-target="15">15</div>
           <p class="text-lg mt-2">Teams United</p>
         </div>
         
         <div class="stat-item text-center">
-          <div class="count-up text-4xl md:text-5xl text-primary dark:text-primary-light" data-target="2">2</div>
+          <div class="count-up text-4xl md:text-5xl text-primary dark:text-primary-light" data-target="3">3</div>
           <p class="text-lg mt-2">Tournaments Held</p>
         </div>
         
         <div class="stat-item text-center">
           <div class="count-up text-4xl md:text-5xl text-primary dark:text-primary-light" data-target="250">250</div>
           <p class="text-lg mt-2">Youths Empowered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- MUMO TOURNAMENT 3RD EDITION - Registered Teams Section -->
+  <section id="registered-teams" class="py-16 bg-gradient-to-br from-green-900 to-green-700 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-8 reveal-from-bottom">
+        <span class="tournament-badge">
+          <i class="fas fa-trophy mr-2"></i>MUMO TOURNAMENT 3RD EDITION
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Registered Teams</h2>
+        <p class="text-lg opacity-90">POCHI (SENGA): 0700881751</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto reveal-from-bottom">
+        <div class="teams-grid">
+          <div class="team-item"><span class="team-number">1</span><span class="team-name">Kabaa Young Cobras</span></div>
+          <div class="team-item"><span class="team-number">2</span><span class="team-name">FC Talanta</span></div>
+          <div class="team-item"><span class="team-number">3</span><span class="team-name">Muvw'ana FC</span></div>
+          <div class="team-item"><span class="team-number">4</span><span class="team-name">Kimuuni FC</span></div>
+          <div class="team-item"><span class="team-number">5</span><span class="team-name">Kwamutula FC</span></div>
+          <div class="team-item"><span class="team-number">6</span><span class="team-name">Kyenguli FC</span></div>
+          <div class="team-item"><span class="team-number">7</span><span class="team-name">Kyenguli Legends</span></div>
+          <div class="team-item"><span class="team-number">8</span><span class="team-name">Manzuva FC</span></div>
+          <div class="team-item"><span class="team-number">9</span><span class="team-name">Young Lions FC</span></div>
+          <div class="team-item"><span class="team-number">10</span><span class="team-name">Skyler FC (Kikae)</span></div>
+          <div class="team-item"><span class="team-number">11</span><span class="team-name">Kimangu FC</span></div>
+          <div class="team-item"><span class="team-number">12</span><span class="team-name">Gallaticos FC</span></div>
+          <div class="team-item"><span class="team-number">13</span><span class="team-name">Talons FC</span></div>
+          <div class="team-item"><span class="team-number">14</span><span class="team-name">Masawa FC</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Support Tournament - Pochi Contribution Section -->
+  <section id="support-tournament" class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white reveal-from-bottom">
+        <i class="fas fa-heart text-red-500 mr-2"></i>Support the Tournament
+      </h2>
+      
+      <div class="max-w-2xl mx-auto reveal-from-bottom">
+        <div class="pochi-card">
+          <div class="text-center mb-6">
+            <i class="fas fa-hand-holding-heart text-4xl mb-3"></i>
+            <h3 class="text-2xl font-bold mb-2">Contribute via POCHI</h3>
+            <p class="opacity-90">Your support helps empower youth through football</p>
+          </div>
+          
+          <div class="pochi-number text-center mb-4" id="pochiNumber">
+            0700881751
+          </div>
+          
+          <div class="flex flex-wrap gap-3 justify-center mb-6">
+            <button id="copyPochiBtn" class="copy-btn">
+              <i class="fas fa-copy mr-2"></i>Copy Number
+            </button>
+            <button id="mpesaStkBtn" class="mpesa-btn">
+              <i class="fas fa-mobile-alt mr-2"></i>Open M-Pesa
+            </button>
+            <button id="ussdDialBtn" class="mpesa-btn" style="background: #4E9F3D;">
+              <i class="fas fa-phone-alt mr-2"></i>Dial *334#
+            </button>
+          </div>
+          
+          <div class="bg-white/10 rounded-lg p-4 text-sm">
+            <p class="font-semibold mb-2"><i class="fas fa-info-circle mr-1"></i> How to contribute:</p>
+            <ol class="list-decimal list-inside space-y-1 opacity-90">
+              <li>Copy the POCHI number above</li>
+              <li>Open M-Pesa or dial *334#</li>
+              <li>Select Option 6: Lipa na M-Pesa</li>
+              <li>Select Option 3: POCHI</li>
+              <li>Paste the number and enter amount</li>
+            </ol>
+          </div>
         </div>
       </div>
     </div>
@@ -1439,10 +1644,112 @@ function startAlternatingText() {
     }, 500);
   }, 3000);
 }
+
+// ========== POCHI CONTRIBUTION FUNCTIONALITY ==========
+document.addEventListener('DOMContentLoaded', function() {
+  const pochiNumber = '0700881751';
+  
+  // Copy number functionality
+  document.getElementById('copyPochiBtn').addEventListener('click', function() {
+    navigator.clipboard.writeText(pochiNumber).then(function() {
+      showToast('✅ POCHI number copied!');
+    }).catch(function() {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = pochiNumber;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      showToast('✅ POCHI number copied!');
+    });
+  });
+  
+  // M-Pesa STK simulation / Open M-Pesa app
+  document.getElementById('mpesaStkBtn').addEventListener('click', function() {
+    // Try to open M-Pesa app via deep link
+    const mpesaAppUrl = 'mpesa://';
+    const safaricomAppUrl = 'safaricom://';
+    
+    // Create hidden iframe to attempt opening app
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = mpesaAppUrl;
+    document.body.appendChild(iframe);
+    
+    setTimeout(function() {
+      document.body.removeChild(iframe);
+      
+      // Fallback - show instructions with option to dial USSD
+      showMpesaInstructions();
+    }, 500);
+    
+    // Also try safaricom app
+    window.location.href = safaricomAppUrl;
+  });
+  
+  // USSD Dial button
+  document.getElementById('ussdDialBtn').addEventListener('click', function() {
+    // Copy number first
+    navigator.clipboard.writeText(pochiNumber).catch(() => {});
+    
+    // Create tel link for USSD
+    const ussdCode = '*334%23';
+    window.location.href = 'tel:' + ussdCode;
+    
+    // Show instructions after a short delay
+    setTimeout(function() {
+      showDetailedInstructions();
+    }, 500);
+  });
+  
+  function showMpesaInstructions() {
+    const instructionHtml = `
+      <div style="position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); z-index:10000; display:flex; align-items:center; justify-content:center; padding:20px;" onclick="this.remove()">
+        <div style="background:white; border-radius:20px; padding:30px; max-width:400px; text-align:left;" onclick="event.stopPropagation()">
+          <h3 style="color:#1E5128; font-size:1.5rem; margin-bottom:15px;">
+            <i class="fas fa-mobile-alt mr-2"></i>M-Pesa POCHI Payment
+          </h3>
+          <p style="margin-bottom:15px;"><strong>Number:</strong> <span style="background:#f0f0f0; padding:5px 10px; border-radius:5px;">${pochiNumber}</span></p>
+          <ol style="list-style:decimal; padding-left:20px; margin-bottom:20px;">
+            <li style="margin-bottom:8px;">Dial <strong>*334#</strong> or open M-Pesa app</li>
+            <li style="margin-bottom:8px;">Select <strong>Option 6: Lipa na M-Pesa</strong></li>
+            <li style="margin-bottom:8px;">Select <strong>Option 3: POCHI</strong></li>
+            <li style="margin-bottom:8px;">Enter number: <strong>${pochiNumber}</strong></li>
+            <li style="margin-bottom:8px;">Enter amount and PIN to complete</li>
+          </ol>
+          <button onclick="this.closest('div').parentElement.remove()" style="background:#4E9F3D; color:white; border:none; padding:12px 25px; border-radius:10px; font-weight:600; width:100%;">Got it!</button>
+          <button onclick="window.location.href='tel:*334%23'" style="background:#2b2b2b; color:white; border:none; padding:12px 25px; border-radius:10px; font-weight:600; width:100%; margin-top:10px;">
+            <i class="fas fa-phone-alt mr-2"></i>Dial *334# Now
+          </button>
+        </div>
+      </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', instructionHtml);
+  }
+  
+  function showDetailedInstructions() {
+    showMpesaInstructions();
+  }
+  
+  function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${message}`;
+    document.body.appendChild(toast);
+    
+    setTimeout(function() {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translate(-50%, 20px)';
+      toast.style.transition = 'all 0.3s ease';
+      setTimeout(function() {
+        document.body.removeChild(toast);
+      }, 300);
+    }, 2000);
+  }
+});
 </script>
-
-
-
 
 </body>
 </html>
