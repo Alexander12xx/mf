@@ -424,60 +424,19 @@
       max-width: 100%;
     }
 
-    /* Pochi contribution styles */
-    .pochi-card {
+    /* Tournament Info Card */
+    .tournament-info-card {
       background: linear-gradient(135deg, #1E5128 0%, #4E9F3D 100%);
       border-radius: 20px;
-      padding: 30px;
+      padding: 25px;
       color: white;
       box-shadow: 0 10px 30px rgba(30, 81, 40, 0.3);
-    }
-    
-    .pochi-number {
-      background: rgba(255,255,255,0.2);
-      border-radius: 12px;
-      padding: 15px 20px;
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      backdrop-filter: blur(10px);
-    }
-    
-    .copy-btn {
-      background: white;
-      color: #1E5128;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    
-    .copy-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-    
-    .mpesa-btn {
-      background: #2b2b2b;
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    
-    .mpesa-btn:hover {
-      background: #1a1a1a;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
     
     .teams-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
+      gap: 12px;
       max-height: 400px;
       overflow-y: auto;
       padding: 10px;
@@ -527,30 +486,44 @@
       margin-bottom: 20px;
     }
     
-    .toast-notification {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1E5128;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 50px;
-      font-weight: 500;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      z-index: 9999;
-      animation: slideUp 0.3s ease;
+    /* Countdown Timer Styles */
+    .countdown-timer {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
     }
     
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translate(-50%, 20px);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-      }
+    .countdown-item {
+      text-align: center;
+      background: rgba(255,255,255,0.15);
+      padding: 15px 10px;
+      border-radius: 12px;
+      min-width: 70px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .countdown-value {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    
+    .countdown-label {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+    
+    .venue-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .dark .venue-card {
+      background: #2A2A2A;
     }
   </style>
 </head>
@@ -579,8 +552,8 @@
       
       <div class="stats-container flex justify-center items-center space-x-8 md:space-x-16 reveal-from-bottom">
         <div class="stat-item text-center">
-          <div class="count-up text-4xl md:text-5xl text-primary dark:text-primary-light" data-target="15">15</div>
-          <p class="text-lg mt-2">Teams United</p>
+          <div class="count-up text-4xl md:text-5xl text-primary dark:text-primary-light" data-target="14">14</div>
+          <p class="text-lg mt-2">Teams Participating</p>
         </div>
         
         <div class="stat-item text-center">
@@ -596,18 +569,74 @@
     </div>
   </section>
   
+  <!-- Tournament Countdown & Venue Section -->
+  <section class="py-12 bg-gradient-to-r from-green-50 to-green-100 dark:from-gray-800 dark:to-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Countdown Card -->
+        <div class="tournament-info-card reveal-from-bottom">
+          <div class="text-center">
+            <span class="tournament-badge">
+              <i class="fas fa-trophy mr-2"></i>MUMO TOURNAMENT 3RD EDITION
+            </span>
+            <h3 class="text-2xl font-bold mb-2">Tournament Starts In</h3>
+            <div class="countdown-timer" id="tournament-countdown">
+              <div class="countdown-item">
+                <div class="countdown-value" id="days">00</div>
+                <div class="countdown-label">Days</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-value" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-value" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-value" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Venue Card -->
+        <div class="venue-card reveal-from-bottom">
+          <div class="flex items-start gap-4">
+            <div class="bg-green-600 text-white p-4 rounded-xl">
+              <i class="fas fa-map-pin text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2 dark:text-white">Tournament Venue</h3>
+              <p class="text-2xl font-bold text-green-700 dark:text-green-400 mb-2">Kabaa Grounds</p>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+                <i class="fas fa-calendar-alt mr-2"></i>April 26, 2026
+              </p>
+              <a href="https://maps.google.com/?q=Kabaa+Grounds+Kenya" target="_blank" 
+                 class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg transition-colors">
+                <i class="fas fa-directions"></i>
+                Get Directions
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- MUMO TOURNAMENT 3RD EDITION - Registered Teams Section -->
   <section id="registered-teams" class="py-16 bg-gradient-to-br from-green-900 to-green-700 text-white">
     <div class="container mx-auto px-4">
       <div class="text-center mb-8 reveal-from-bottom">
         <span class="tournament-badge">
-          <i class="fas fa-trophy mr-2"></i>MUMO TOURNAMENT 3RD EDITION
+          <i class="fas fa-futbol mr-2"></i>PARTICIPATING TEAMS
         </span>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Registered Teams</h2>
-        <p class="text-lg opacity-90">POCHI (SENGA): 0700881751</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">MUMO TOURNAMENT 3RD EDITION</h2>
+        <p class="text-lg opacity-90">14 Teams Registered</p>
       </div>
       
-      <div class="max-w-4xl mx-auto reveal-from-bottom">
+      <div class="max-w-5xl mx-auto reveal-from-bottom">
         <div class="teams-grid">
           <div class="team-item"><span class="team-number">1</span><span class="team-name">Kabaa Young Cobras</span></div>
           <div class="team-item"><span class="team-number">2</span><span class="team-name">FC Talanta</span></div>
@@ -627,619 +656,383 @@
       </div>
     </div>
   </section>
-  
-  <!-- Support Tournament - Pochi Contribution Section -->
-  <section id="support-tournament" class="py-16 bg-gray-100 dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white reveal-from-bottom">
-        <i class="fas fa-heart text-red-500 mr-2"></i>Support the Tournament
-      </h2>
-      
-      <div class="max-w-2xl mx-auto reveal-from-bottom">
-        <div class="pochi-card">
-          <div class="text-center mb-6">
-            <i class="fas fa-hand-holding-heart text-4xl mb-3"></i>
-            <h3 class="text-2xl font-bold mb-2">Contribute via POCHI</h3>
-            <p class="opacity-90">Your support helps empower youth through football</p>
-          </div>
-          
-          <div class="pochi-number text-center mb-4" id="pochiNumber">
-            0700881751
-          </div>
-          
-          <div class="flex flex-wrap gap-3 justify-center mb-6">
-            <button id="copyPochiBtn" class="copy-btn">
-              <i class="fas fa-copy mr-2"></i>Copy Number
-            </button>
-            <button id="mpesaStkBtn" class="mpesa-btn">
-              <i class="fas fa-mobile-alt mr-2"></i>Open M-Pesa
-            </button>
-            <button id="ussdDialBtn" class="mpesa-btn" style="background: #4E9F3D;">
-              <i class="fas fa-phone-alt mr-2"></i>Dial *334#
-            </button>
-          </div>
-          
-          <div class="bg-white/10 rounded-lg p-4 text-sm">
-            <p class="font-semibold mb-2"><i class="fas fa-info-circle mr-1"></i> How to contribute:</p>
-            <ol class="list-decimal list-inside space-y-1 opacity-90">
-              <li>Copy the POCHI number above</li>
-              <li>Open M-Pesa or dial *334#</li>
-              <li>Select Option 6: Lipa na M-Pesa</li>
-              <li>Select Option 3: POCHI</li>
-              <li>Paste the number and enter amount</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Upcoming Matches Section -->
- <section class="py-16 bg-gray-100 dark:bg-gray-900">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">
-      Upcoming Foundation Matches
-    </h2>
 
-    <div class="grid gap-8 md:grid-cols-2">
-      <!-- Card 1 -->
-      <div
-        class="match-card-safe bg-white dark:bg-dark/80 rounded-xl p-6 shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl animate-match-fade"
-      >
-        <div class="flex justify-between items-center mb-4">
-          <div>
-            <h3 class="text-xl font-semibold">Kasarani Youth Cup</h3>
-            <p class="text-gray-600 dark:text-gray-400">Final Match</p>
-          </div>
-          <div>
-            <p class="text-sm text-gray-500 dark:text-gray-400">
-              July 15, 2025 • 3:00 PM
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="flex justify-between items-center py-4 border-t border-b border-gray-200 dark:border-gray-700 mb-4"
-        >
-          <div class="flex flex-col items-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2018/07/08/14/16/football-3523153_1280.jpg"
-              alt="Kasarani Stars"
-              class="w-16 h-16 object-cover rounded-full mb-2"
-            />
-            <p class="font-medium">Kasarani Stars</p>
-          </div>
-
-          <div class="text-center">
-            <p class="text-3xl font-bold">VS</p>
-          </div>
-
-          <div class="flex flex-col items-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2016/06/15/15/28/football-1459037_1280.jpg"
-              alt="Mathare United"
-              class="w-16 h-16 object-cover rounded-full mb-2"
-            />
-            <p class="font-medium">Mathare United</p>
-          </div>
-        </div>
-
-        <div class="flex justify-between items-center">
-          <a
-            href="https://maps.google.com/?q=Kasarani+Stadium,Nairobi,Kenya"
-            target="_blank"
-            class="flex items-center text-primary dark:text-primary-light hover:underline"
-          >
-            <i class="fas fa-map-marker-alt mr-2"></i>
-            <span>Kasarani Stadium</span>
-          </a>
-
-          <div>
-            <p class="text-sm font-medium">Starts in:</p>
-            <div class="font-mono font-bold text-lg">00:00:00:00</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div
-        class="match-card-safe bg-white dark:bg-dark/80 rounded-xl p-6 shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl animate-match-fade delay-200"
-      >
-        <div class="flex justify-between items-center mb-4">
-          <div>
-            <h3 class="text-xl font-semibold">Community Shield</h3>
-            <p class="text-gray-600 dark:text-gray-400">Semi Final</p>
-          </div>
-          <div>
-            <p class="text-sm text-gray-500 dark:text-gray-400">
-              July 20, 2025 • 4:30 PM
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="flex justify-between items-center py-4 border-t border-b border-gray-200 dark:border-gray-700 mb-4"
-        >
-          <div class="flex flex-col items-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2017/06/09/23/22/soccer-2394138_1280.jpg"
-              alt="Eastlands FC"
-              class="w-16 h-16 object-cover rounded-full mb-2"
-            />
-            <p class="font-medium">Eastlands FC</p>
-          </div>
-
-          <div class="text-center">
-            <p class="text-3xl font-bold">VS</p>
-          </div>
-
-          <div class="flex flex-col items-center">
-            <img
-              src="https://cdn.pixabay.com/photo/2016/10/18/21/22/soccer-1756074_1280.jpg"
-              alt="Westside United"
-              class="w-16 h-16 object-cover rounded-full mb-2"
-            />
-            <p class="font-medium">Westside United</p>
-          </div>
-        </div>
-
-        <div class="flex justify-between items-center">
-          <a
-            href="https://maps.google.com/?q=City+Stadium,Nairobi,Kenya"
-            target="_blank"
-            class="flex items-center text-primary dark:text-primary-light hover:underline"
-          >
-            <i class="fas fa-map-marker-alt mr-2"></i>
-            <span>City Stadium</span>
-          </a>
-
-          <div>
-            <p class="text-sm font-medium">Starts in:</p>
-            <div class="font-mono font-bold text-lg">00:00:00:00</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-  
-  <!-- Live Matches Section -->
-<section class="matches-section py-16 bg-gray-900 text-gray-100" style="width: 100%;">
-  <div class="container mx-auto px-4" >
-    <h2 class="text-3xl font-bold text-center mb-8 text-cyan-400">
-      ⚽ Latest Match Highlights
-    </h2>
-
-    <div id="match-list" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-center">
-      Loading highlights…
-    </div>
-  </div>
-</section>
-
-<style>
-.matches-section {
-  background: #0f172a;
-  color: #f1f5f9;
-  text-align: center;
-}
-#match-list {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  max-width: 1200px;
-  margin: auto;
-}
-.match-card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
-.match-card:hover {
-  transform: translateY(-6px);
-}
-.match-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-.match-card h3 {
-  color: #38bdf8;
-  font-size: 1rem;
-  margin: 0.5rem 0;
-}
-.match-card p {
-  font-size: 0.875rem;
-  color: #cbd5e1;
-}
-</style>
-
-<script>
-fetch("https://www.scorebat.com/video-api/v3/")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("match-list");
-    container.innerHTML = "";
-
-    if (!data.response || data.response.length === 0) {
-      container.innerHTML = "<p>No highlights available at the moment.</p>";
-      return;
-    }
-
-    data.response.slice(0, 6).forEach(match => {
-      const { title, competition, thumbnail, url } = match;
-      const card = document.createElement("div");
-      card.className = "match-card animate-fade-in";
-      card.innerHTML = `
-        <a href="${url}" target="_blank" style="text-decoration:none; color:inherit;">
-          <img src="${thumbnail}" alt="${title}">
-          <h3>${title}</h3>
-          <p>${competition}</p>
-        </a>
-      `;
-      container.appendChild(card);
-    });
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById("match-list").innerText = "Failed to load match highlights.";
-  });
-</script>
-
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in {
-  animation: fadeIn 0.6s ease forwards;
-}
-</style>
-
-
-  
   <!-- Teams & Standings Section -->
   <section id="standings" class="py-16 bg-secondary/20 dark:bg-dark/90">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-12 reveal-from-bottom">Teams & Standings</h2>
+      <h2 class="text-3xl font-bold text-center mb-4 reveal-from-bottom">Tournament Standings</h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-8 reveal-from-bottom">
+        <i class="fas fa-map-marker-alt mr-1"></i> Kabaa Grounds • April 26, 2026
+      </p>
       
-      <div class="max-w-4xl mx-auto overflow-x-auto reveal-from-bottom">
+      <div class="max-w-6xl mx-auto overflow-x-auto reveal-from-bottom">
         <table class="w-full">
           <thead class="bg-primary text-white">
             <tr>
               <th class="py-3 px-4 text-left">#</th>
               <th class="py-3 px-4 text-left">Team</th>
-              <th class="py-3 px-4 text-center">Played</th>
-              <th class="py-3 px-4 text-center">Won</th>
-              <th class="py-3 px-4 text-center">Draw</th>
-              <th class="py-3 px-4 text-center">Lost</th>
+              <th class="py-3 px-4 text-center">P</th>
+              <th class="py-3 px-4 text-center">W</th>
+              <th class="py-3 px-4 text-center">D</th>
+              <th class="py-3 px-4 text-center">L</th>
+              <th class="py-3 px-4 text-center">GF</th>
+              <th class="py-3 px-4 text-center">GA</th>
               <th class="py-3 px-4 text-center">GD</th>
-              <th class="py-3 px-4 text-center">Points</th>
+              <th class="py-3 px-4 text-center">Pts</th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="table-row border-b dark:border-gray-700">
-              <td class="py-3 px-4 team-position-1">1</td>
-              <td class="py-3 px-4">
-                <div class="flex items-center">
-                  <img src="https://cdn.pixabay.com/photo/2018/07/08/14/16/football-3523153_1280.jpg" alt="Team logo" class="w-8 h-8 rounded-full mr-2">
-                  <span>Kasarani Stars</span>
-                </div>
-              </td>
-              <td class="py-3 px-4 text-center">10</td>
-              <td class="py-3 px-4 text-center">8</td>
-              <td class="py-3 px-4 text-center">1</td>
-              <td class="py-3 px-4 text-center">1</td>
-              <td class="py-3 px-4 text-center">+15</td>
-              <td class="py-3 px-4 text-center font-bold">25</td>
-            </tr>
-            <tr class="table-row border-b dark:border-gray-700">
-              <td class="py-3 px-4 team-position-2">2</td>
-              <td class="py-3 px-4">
-                <div class="flex items-center">
-                  <img src="https://cdn.pixabay.com/photo/2016/06/15/15/28/football-1459037_1280.jpg" alt="Team logo" class="w-8 h-8 rounded-full mr-2">
-                  <span>Mathare United</span>
-                </div>
-              </td>
-              <td class="py-3 px-4 text-center">10</td>
-              <td class="py-3 px-4 text-center">7</td>
-              <td class="py-3 px-4 text-center">2</td>
-              <td class="py-3 px-4 text-center">1</td>
-              <td class="py-3 px-4 text-center">+11</td>
-              <td class="py-3 px-4 text-center font-bold">23</td>
-            </tr>
-            <tr class="table-row border-b dark:border-gray-700">
-              <td class="py-3 px-4 team-position-3">3</td>
-              <td class="py-3 px-4">
-                <div class="flex items-center">
-                  <img src="https://cdn.pixabay.com/photo/2013/07/13/10/51/football-157930_1280.png" alt="Team logo" class="w-8 h-8 rounded-full mr-2">
-                  <span>Dandora FC</span>
-                </div>
-              </td>
-              <td class="py-3 px-4 text-center">10</td>
-              <td class="py-3 px-4 text-center">6</td>
-              <td class="py-3 px-4 text-center">3</td>
-              <td class="py-3 px-4 text-center">1</td>
-              <td class="py-3 px-4 text-center">+8</td>
-              <td class="py-3 px-4 text-center font-bold">21</td>
-            </tr>
-            <tr class="table-row border-b dark:border-gray-700">
-              <td class="py-3 px-4">4</td>
-              <td class="py-3 px-4">
-                <div class="flex items-center">
-                  <img src="https://cdn.pixabay.com/photo/2016/04/12/22/35/watercolour-1325656_1280.jpg" alt="Team logo" class="w-8 h-8 rounded-full mr-2">
-                  <span>Kibera Youth</span>
-                </div>
-              </td>
-              <td class="py-3 px-4 text-center">10</td>
-              <td class="py-3 px-4 text-center">5</td>
-              <td class="py-3 px-4 text-center">2</td>
-              <td class="py-3 px-4 text-center">3</td>
-              <td class="py-3 px-4 text-center">+4</td>
-              <td class="py-3 px-4 text-center font-bold">17</td>
-            </tr>
-            <tr class="table-row border-b dark:border-gray-700">
-              <td class="py-3 px-4">5</td>
-              <td class="py-3 px-4">
-                <div class="flex items-center">
-                  <img src="https://cdn.pixabay.com/photo/2013/07/13/11/42/football-158529_1280.png" alt="Team logo" class="w-8 h-8 rounded-full mr-2">
-                  <span>Eastleigh Warriors</span>
-                </div>
-              </td>
-              <td class="py-3 px-4 text-center">10</td>
-              <td class="py-3 px-4 text-center">4</td>
-              <td class="py-3 px-4 text-center">3</td>
-              <td class="py-3 px-4 text-center">3</td>
-              <td class="py-3 px-4 text-center">+1</td>
-              <td class="py-3 px-4 text-center font-bold">15</td>
-            </tr>
+          <tbody id="standings-body">
+            <!-- Standings will be populated by JavaScript -->
           </tbody>
         </table>
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+          <i class="fas fa-info-circle mr-1"></i> Tournament starts April 26, 2026. Standings will update as matches are played.
+        </p>
       </div>
     </div>
   </section>
-  <!-- 🏅 Tournament Gallery Section with Real Images -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-/>
 
-<section id="tournament-gallery" class="py-16 bg-gray-100 dark:bg-gray-900">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">
-      Tournament Highlights
-    </h2>
-    <p class="text-center mb-12 text-gray-600 dark:text-gray-300">
-      Relive the excitement from recent tournaments 📸
-    </p>
+  <!-- Upcoming Matches Section -->
+  <section class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">
+        Tournament Matches - April 26, 2026
+      </h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
+        <i class="fas fa-map-marker-alt mr-2"></i>Kabaa Grounds
+      </p>
 
-    <div class="swiper tournament-swiper rounded-xl overflow-hidden shadow-lg">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="aspect-video overflow-hidden rounded-lg">
-            <img src="images/slide 1.jpeg" alt="Tournament Image 1" class="w-full h-full object-cover">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="aspect-video overflow-hidden rounded-lg">
-            <img src="images/slide 4.jpeg" alt="Tournament Image 2" class="w-full h-full object-cover">
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="aspect-video overflow-hidden rounded-lg">
-            <img src="images/slide 2.jpeg" alt="Tournament Image 3" class="w-full h-full object-cover">
-          </div>
-        </div>
-
-         <div class="swiper-slide">
-          <div class="aspect-video overflow-hidden rounded-lg">
-            <img src="images/WhatsApp Image 2025-07-17 at 3.28.14 PM.jpeg" alt="Tournament Image 2" class="w-full h-full object-cover">
-          </div>
-        </div>
-
-       
-
-        <div class="swiper-slide">
-          <div class="aspect-video overflow-hidden rounded-lg">
-            <img src="images/slide 3.jpeg" alt="Tournament Image 4" class="w-full h-full object-cover">
-          </div>
-        </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" id="fixtures-container">
+        <!-- Fixtures will be populated by JavaScript -->
       </div>
-
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <!-- Live Matches Section -->
+  <section class="matches-section py-16 bg-gray-900 text-gray-100" style="width: 100%;">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-cyan-400">
+        ⚽ Latest Match Highlights
+      </h2>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  new Swiper(".tournament-swiper", {
-    loop: true,
-    autoplay: { delay: 3000, disableOnInteraction: false },
-    pagination: { el: ".swiper-pagination", clickable: true },
-    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-    effect: "slide",
-    speed: 800,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    breakpoints: {
-      640: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
+      <div id="match-list" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-center">
+        Loading highlights…
+      </div>
+    </div>
+  </section>
+
+  <style>
+  .matches-section {
+    background: #0f172a;
+    color: #f1f5f9;
+    text-align: center;
+  }
+  #match-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 1200px;
+    margin: auto;
+  }
+  .match-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  .match-card:hover {
+    transform: translateY(-6px);
+  }
+  .match-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .match-card h3 {
+    color: #38bdf8;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  .match-card p {
+    font-size: 0.875rem;
+    color: #cbd5e1;
+  }
+  .fixture-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  .dark .fixture-card {
+    background: #1e293b;
+  }
+  .fixture-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  .fixture-time {
+    background: #4E9F3D;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+  }
+  .fixture-vs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+  .fixture-team {
+    text-align: center;
+    flex: 1;
+  }
+  .fixture-team-name {
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  </style>
+
+  <script>
+  fetch("https://www.scorebat.com/video-api/v3/")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("match-list");
+      container.innerHTML = "";
+
+      if (!data.response || data.response.length === 0) {
+        container.innerHTML = "<p>No highlights available at the moment.</p>";
+        return;
+      }
+
+      data.response.slice(0, 6).forEach(match => {
+        const { title, competition, thumbnail, url } = match;
+        const card = document.createElement("div");
+        card.className = "match-card animate-fade-in";
+        card.innerHTML = `
+          <a href="${url}" target="_blank" style="text-decoration:none; color:inherit;">
+            <img src="${thumbnail}" alt="${title}">
+            <h3>${title}</h3>
+            <p>${competition}</p>
+          </a>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById("match-list").innerText = "Failed to load match highlights.";
+    });
+  </script>
+
+  <style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease forwards;
+  }
+  </style>
+
+  <!-- Tournament Gallery Section -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+  <section id="tournament-gallery" class="py-16 bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">
+        Tournament Highlights
+      </h2>
+      <p class="text-center mb-12 text-gray-600 dark:text-gray-300">
+        Relive the excitement from recent tournaments 📸
+      </p>
+
+      <div class="swiper tournament-swiper rounded-xl overflow-hidden shadow-lg">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="aspect-video overflow-hidden rounded-lg">
+              <img src="images/slide 1.jpeg" alt="Tournament Image 1" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="aspect-video overflow-hidden rounded-lg">
+              <img src="images/slide 4.jpeg" alt="Tournament Image 2" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="aspect-video overflow-hidden rounded-lg">
+              <img src="images/slide 2.jpeg" alt="Tournament Image 3" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="aspect-video overflow-hidden rounded-lg">
+              <img src="images/WhatsApp Image 2025-07-17 at 3.28.14 PM.jpeg" alt="Tournament Image 2" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="aspect-video overflow-hidden rounded-lg">
+              <img src="images/slide 3.jpeg" alt="Tournament Image 4" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    new Swiper(".tournament-swiper", {
+      loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      effect: "slide",
+      speed: 800,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
   });
-});
-</script>
+  </script>
 
-
-  
-<!-- Sponsors Section -->
-<section id="sponsors" style="padding:4rem 0; background:#fff; color:#1f2937; text-align:center;">
-  <div style="max-width:600px; margin:0 auto; position:relative;">
-    <!--<h2 style="font-size:2rem; font-weight:700; margin-bottom:2rem;">🎯 Our Sponsors</h2>-->
-
-    <div class="sponsor-slide" style="position:relative; height:300px;">
-      <!-- Slide 1 -->
-      <div class="sponsor" style="position:absolute; inset:0; opacity:1; z-index:1; pointer-events:auto; transition:opacity 1s ease;">
-        <a href="https://altechit.netlify.app" target="_blank" style="display:block; height:100%;">
-          <img src="images/ChatGPT_Image_May_10__2025__10_13_44_PM-removebg-preview.png" alt="Sponsor 1" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
-          <h3 style="font-size:1.25rem; font-weight:600;">Need a website?</h3>
-          <p style="color:#6b7280;">Contact Altech Solutions for a professional website</p>
-        </a>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
-        <a href="https://quickfix1.netlify.app" target="_blank" style="display:block; height:100%;">
-          <img src="images/quickfix.png" alt="Sponsor 2" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
-          <h3 style="font-size:1.25rem; font-weight:600;">Looking for phone repair?</h3>
-          <p style="color:#6b7280;">Reach out to QuickFix</p>
-        </a>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
-        <a href="https://weatheralt.netlify.app" target="_blank" style="display:block; height:100%;">
-          <img src="https://tse2.mm.bing.net/th/id/OIP.xFaQ4wqH6rzEVGB1CYnCRgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sponsor 3" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
-          <h3 style="font-size:1.25rem; font-weight:600;">For Weather Updates</h3>
-          <p style="color:#6b7280;">Check out Altech Weather</p>
-        </a>
-      </div>
-
-      <!-- Slide 4 -->
-      <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
-        <a href="#" target="_blank" style="display:block; height:100%;">
-          <img src="images/lions paw (1).png" alt="Lions Paw Entertainment" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
-          <h3 style="font-size:1.25rem; font-weight:600;">For Events & Parties</h3>
-          <p style="color:#6b7280;">Lions Paw Entertainment</p>
-        </a>
-      </div>
-
-      <!-- Slide 5 -->
-      <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
-        <a href="#" target="_blank" style="display:block; height:100%;">
-          <img src="images/image-removebg-preview (15).png" alt="Mumo Foundation" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
-          <h3 style="font-size:1.25rem; font-weight:600;">Mumo Foundation</h3>
-          <p style="color:#6b7280;">Football Tournaments</p>
-        </a>
-      </div>
-    </div>
-
-    <div style="text-align:center; margin-top:2.5rem;">
-      <p style="font-size:1.125rem;">Interested in becoming a sponsor?</p>
-      <a href="#join-community" style="display:inline-block; margin-top:0.5rem; color:#3b82f6; font-weight:500; text-decoration:underline;">Contact Us</a>
-    </div>
-  </div>
-</section>
-
-<script>
-  const sponsors = document.querySelectorAll('#sponsors .sponsor');
-  let index = 0;
-
-  setInterval(() => {
-    sponsors[index].style.opacity = '0';
-    sponsors[index].style.zIndex = '0';
-    sponsors[index].style.pointerEvents = 'none';
-
-    index = (index + 1) % sponsors.length;
-
-    sponsors[index].style.opacity = '1';
-    sponsors[index].style.zIndex = '1';
-    sponsors[index].style.pointerEvents = 'auto';
-  }, 4000);
-</script>
-
-
-  
-  <!-- Sign Up Section -->
- <!-- 🌟 Join Our Community Section -->
-<section id="join-community" class="py-16 bg-secondary/20 dark:bg-dark/90">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Join Our Community</h2>
-
-    <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
-      <form id="signup-form" class="space-y-6">
-        <div>
-          <label for="name" class="block text-sm font-medium mb-1">Full Name</label>
-          <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
+  <!-- Sponsors Section -->
+  <section id="sponsors" style="padding:4rem 0; background:#fff; color:#1f2937; text-align:center;">
+    <div style="max-width:600px; margin:0 auto; position:relative;">
+      <div class="sponsor-slide" style="position:relative; height:300px;">
+        <!-- Slide 1 -->
+        <div class="sponsor" style="position:absolute; inset:0; opacity:1; z-index:1; pointer-events:auto; transition:opacity 1s ease;">
+          <a href="https://altechit.netlify.app" target="_blank" style="display:block; height:100%;">
+            <img src="images/ChatGPT_Image_May_10__2025__10_13_44_PM-removebg-preview.png" alt="Sponsor 1" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+            <h3 style="font-size:1.25rem; font-weight:600;">Need a website?</h3>
+            <p style="color:#6b7280;">Contact Altech Solutions for a professional website</p>
+          </a>
         </div>
 
-        <div>
-          <label for="team" class="block text-sm font-medium mb-1">Team Name (optional)</label>
-          <input type="text" id="team" name="team" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+        <!-- Slide 2 -->
+        <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
+          <a href="https://quickfix1.netlify.app" target="_blank" style="display:block; height:100%;">
+            <img src="images/quickfix.png" alt="Sponsor 2" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+            <h3 style="font-size:1.25rem; font-weight:600;">Looking for phone repair?</h3>
+            <p style="color:#6b7280;">Reach out to QuickFix</p>
+          </a>
         </div>
 
-        <div>
-          <p class="block text-sm font-medium mb-2">Role</p>
-          <div class="flex flex-wrap gap-4">
-            <label class="flex items-center gap-2">
-              <input type="radio" name="role" value="Player" checked> Player
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="role" value="Volunteer"> Volunteer
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="radio" name="role" value="Sponsor"> Sponsor
-            </label>
+        <!-- Slide 3 -->
+        <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
+          <a href="https://weatheralt.netlify.app" target="_blank" style="display:block; height:100%;">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.xFaQ4wqH6rzEVGB1CYnCRgAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sponsor 3" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+            <h3 style="font-size:1.25rem; font-weight:600;">For Weather Updates</h3>
+            <p style="color:#6b7280;">Check out Altech Weather</p>
+          </a>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
+          <a href="#" target="_blank" style="display:block; height:100%;">
+            <img src="images/lions paw (1).png" alt="Lions Paw Entertainment" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+            <h3 style="font-size:1.25rem; font-weight:600;">For Events & Parties</h3>
+            <p style="color:#6b7280;">Lions Paw Entertainment</p>
+          </a>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="sponsor" style="position:absolute; inset:0; opacity:0; z-index:0; pointer-events:none; transition:opacity 1s ease;">
+          <a href="#" target="_blank" style="display:block; height:100%;">
+            <img src="images/image-removebg-preview (15).png" alt="Mumo Foundation" style="height:150px; margin:0 auto 1rem; display:block; object-fit:contain;">
+            <h3 style="font-size:1.25rem; font-weight:600;">Mumo Foundation</h3>
+            <p style="color:#6b7280;">Football Tournaments</p>
+          </a>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <p style="font-size:1.125rem;">Interested in becoming a sponsor?</p>
+        <a href="#join-community" style="display:inline-block; margin-top:0.5rem; color:#3b82f6; font-weight:500; text-decoration:underline;">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const sponsors = document.querySelectorAll('#sponsors .sponsor');
+    let index = 0;
+
+    setInterval(() => {
+      sponsors[index].style.opacity = '0';
+      sponsors[index].style.zIndex = '0';
+      sponsors[index].style.pointerEvents = 'none';
+
+      index = (index + 1) % sponsors.length;
+
+      sponsors[index].style.opacity = '1';
+      sponsors[index].style.zIndex = '1';
+      sponsors[index].style.pointerEvents = 'auto';
+    }, 4000);
+  </script>
+
+  <!-- Join Our Community Section -->
+  <section id="join-community" class="py-16 bg-secondary/20 dark:bg-dark/90">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Join Our Community</h2>
+
+      <div class="max-w-xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+        <form id="signup-form" class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium mb-1">Full Name</label>
+            <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
           </div>
-        </div>
 
-        <div>
-          <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
-          <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="+254..." required>
-        </div>
+          <div>
+            <label for="team" class="block text-sm font-medium mb-1">Team Name (optional)</label>
+            <input type="text" id="team" name="team" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+          </div>
 
-        <div>
-          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2">
-            <i class="fab fa-whatsapp"></i>
-            Submit
-          </button>
-        </div>
-      </form>
+          <div>
+            <p class="block text-sm font-medium mb-2">Role</p>
+            <div class="flex flex-wrap gap-4">
+              <label class="flex items-center gap-2">
+                <input type="radio" name="role" value="Player" checked> Player
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="role" value="Volunteer"> Volunteer
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="role" value="Sponsor"> Sponsor
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-medium mb-1">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="+254..." required>
+          </div>
+
+          <div>
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2">
+              <i class="fab fa-whatsapp"></i>
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("signup-form");
-
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const team = document.getElementById("team").value.trim();
-    const role = document.querySelector("input[name='role']:checked").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-
-    if (!name || !phone) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
-    const message =
-      `Hello Mumo Foundation! 👋%0A` +
-      `I would like to join as a *${role}*.%0A` +
-      `*Name:* ${name}%0A` +
-      (team ? `*Team:* ${team}%0A` : "") +
-      `*Phone:* ${phone}`;
-
-    const whatsappURL = `https://wa.me/254716868013?text=${message}`;
-    window.open(whatsappURL, "_blank");
-  });
-});
-</script>
-
-  
   <!-- Footer Section -->
   <footer class="bg-dark text-white py-8">
     <div class="container mx-auto px-4 text-center">
@@ -1265,11 +1058,139 @@ document.addEventListener("DOMContentLoaded", () => {
   </footer>
 
   <script id="app-script">
+    // Registered teams data
+    const registeredTeams = [
+      "Kabaa Young Cobras",
+      "FC Talanta",
+      "Muvw'ana FC",
+      "Kimuuni FC",
+      "Kwamutula FC",
+      "Kyenguli FC",
+      "Kyenguli Legends",
+      "Manzuva FC",
+      "Young Lions FC",
+      "Skyler FC (Kikae)",
+      "Kimangu FC",
+      "Gallaticos FC",
+      "Talons FC",
+      "Masawa FC"
+    ];
+
+    // Populate Standings Table with real teams (all 0 scores)
+    function populateStandings() {
+      const tbody = document.getElementById('standings-body');
+      tbody.innerHTML = '';
+      
+      registeredTeams.forEach((team, index) => {
+        const position = index + 1;
+        const row = document.createElement('tr');
+        row.className = 'table-row border-b dark:border-gray-700';
+        
+        // Add medal colors for top 3 (even though all 0 points, shows potential)
+        let positionClass = '';
+        if (position === 1) positionClass = 'team-position-1';
+        else if (position === 2) positionClass = 'team-position-2';
+        else if (position === 3) positionClass = 'team-position-3';
+        
+        row.innerHTML = `
+          <td class="py-3 px-4 ${positionClass}">${position}</td>
+          <td class="py-3 px-4">
+            <div class="flex items-center">
+              <i class="fas fa-shield-alt text-green-600 dark:text-green-400 mr-2"></i>
+              <span>${team}</span>
+            </div>
+          </td>
+          <td class="py-3 px-4 text-center">0</td>
+          <td class="py-3 px-4 text-center">0</td>
+          <td class="py-3 px-4 text-center">0</td>
+          <td class="py-3 px-4 text-center">0</td>
+          <td class="py-3 px-4 text-center">0</td>
+          <td class="py-3 px-4 text-center">0</td>
+          <td class="py-3 px-4 text-center">0</td>
+          <td class="py-3 px-4 text-center font-bold">0</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Generate fixtures for the tournament
+    function generateFixtures() {
+      const container = document.getElementById('fixtures-container');
+      const shuffled = [...registeredTeams].sort(() => Math.random() - 0.5);
+      const fixtures = [];
+      
+      // Create 7 matches (14 teams)
+      for (let i = 0; i < 7; i++) {
+        fixtures.push({
+          home: shuffled[i * 2],
+          away: shuffled[i * 2 + 1],
+          time: `${9 + i}:00 AM`
+        });
+      }
+      
+      container.innerHTML = fixtures.map((fixture, index) => `
+        <div class="fixture-card reveal-from-bottom">
+          <div class="flex justify-between items-center mb-3">
+            <span class="fixture-time">
+              <i class="far fa-clock mr-1"></i>${fixture.time}
+            </span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Match ${index + 1}</span>
+          </div>
+          <div class="fixture-vs">
+            <div class="fixture-team">
+              <i class="fas fa-futbol text-2xl text-green-600 dark:text-green-400"></i>
+              <div class="fixture-team-name dark:text-white">${fixture.home}</div>
+            </div>
+            <div class="text-xl font-bold text-gray-400">VS</div>
+            <div class="fixture-team">
+              <i class="fas fa-futbol text-2xl text-green-600 dark:text-green-400"></i>
+              <div class="fixture-team-name dark:text-white">${fixture.away}</div>
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <span class="text-xs text-gray-500 dark:text-gray-400">
+              <i class="fas fa-map-marker-alt mr-1"></i>Kabaa Grounds
+            </span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Tournament Countdown
+    function startTournamentCountdown() {
+      const tournamentDate = new Date('April 26, 2026 09:00:00').getTime();
+      
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = tournamentDate - now;
+        
+        if (distance < 0) {
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+          return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      }
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }
+
     // Theme Toggle
     const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     
-    // Check for saved theme preference or respect OS preference
     if (localStorage.getItem('theme') === 'dark' || 
         (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       htmlElement.classList.add('dark');
@@ -1279,7 +1200,6 @@ document.addEventListener("DOMContentLoaded", () => {
       themeToggleBtn.innerHTML = '<i class="fas fa-moon text-white"></i>';
     }
     
-    // Theme toggle function
     themeToggleBtn.addEventListener('click', () => {
       if (htmlElement.classList.contains('dark')) {
         htmlElement.classList.remove('dark');
@@ -1318,7 +1238,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     function animateCountUp(el) {
       const target = parseInt(el.getAttribute('data-target'));
-      const duration = 2000; // 2 seconds
+      const duration = 2000;
       const startTime = performance.now();
       
       function updateCount(currentTime) {
@@ -1336,7 +1256,6 @@ document.addEventListener("DOMContentLoaded", () => {
       requestAnimationFrame(updateCount);
     }
     
-    // Intersection Observer for count-up animation
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1350,406 +1269,127 @@ document.addEventListener("DOMContentLoaded", () => {
       observer.observe(el);
     });
     
-    // Match Countdown Timer
-    function updateCountdown() {
-      const matchDate = new Date('July 15, 2025 15:00:00').getTime();
-      const now = new Date().getTime();
-      const timeLeft = matchDate - now;
-      
-      if (timeLeft > 0) {
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-        
-        document.getElementById('countdown').textContent = 
-          `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      } else {
-        document.getElementById('countdown').textContent = 'Match Day!';
-      }
-    }
-    
-    // Update countdown every second
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-    
-    // Live Match Slider
-    let currentSlide = 0;
-    const sliderContainer = document.querySelector('.slider-container');
-    const sliderPrev = document.querySelector('.slider-prev');
-    const sliderNext = document.querySelector('.slider-next');
-    
-    // Mock data for live matches (would be replaced by Scorebat API)
-
-
-  // Replace this with your actual API URL
- 
-
-
-
-
-
-
-async function getTeamLogo(teamName) {
-  const res = await fetch(`https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=${encodeURIComponent(teamName)}`);
-  const data = await res.json();
-  return data.teams ? data.teams[0].strTeamBadge : null;
-}
-
-function startCountdown(targetDate, element) {
-  function update() {
-    const now = new Date();
-    const distance = targetDate - now;
-
-    if (distance <= 0) {
-      element.textContent = "Kickoff!";
-      return;
-    }
-
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    element.textContent = `⏳ ${hours}h ${minutes}m ${seconds}s`;
-    setTimeout(update, 1000);
-  }
-
-  update();
-}
-
-async function displayMatches() {
-  const res = await fetch("https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4328");
-  const data = await res.json();
-  const matchList = document.getElementById("match-list");
-  matchList.innerHTML = "";
-
-  for (const match of data.events.slice(0, 6)) {
-    const { strEvent, dateEvent, strTime, strHomeTeam, strAwayTeam, strVenue, intHomeScore, intAwayScore } = match;
-    const homeLogo = await getTeamLogo(strHomeTeam);
-    const awayLogo = await getTeamLogo(strAwayTeam);
-    const scoreText = (intHomeScore !== null && intAwayScore !== null)
-      ? `<strong>Score:</strong> ${intHomeScore} - ${intAwayScore}`
-      : `<strong>Status:</strong> Upcoming`;
-
-    const kickoffTime = new Date(`${dateEvent}T${strTime}`);
-    const displayDate = kickoffTime.toLocaleString();
-
-    const card = document.createElement("div");
-    card.className = "match-card";
-    card.innerHTML = `
-      <div class="team">
-        <img src="${homeLogo}" alt="${strHomeTeam} logo" /> <span>${strHomeTeam}</span>
-        <span style="margin: 0 10px;">vs</span>
-        <img src="${awayLogo}" alt="${strAwayTeam} logo" /> <span>${strAwayTeam}</span>
-      </div>
-      <h4>${strEvent}</h4>
-      <p><strong>Date:</strong> ${displayDate}</p>
-      <p><strong>Venue:</strong> ${strVenue || 'TBA'}</p>
-      <p>${scoreText}</p>
-      <p class="countdown">Loading countdown...</p>
-    `;
-    matchList.appendChild(card);
-
-    const countdownEl = card.querySelector(".countdown");
-    startCountdown(kickoffTime, countdownEl);
-  }
-}
-
-displayMatches();
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-    .then(reg => {
-      console.log("Service Worker registered for Mumo Foundation.");
-
-      // 🔷 Listen for updates
-      reg.onupdatefound = () => {
-        const newWorker = reg.installing;
-        newWorker.onstatechange = () => {
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            alert('New content is available. Please reload to update.');
+    // Signup Form
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("signup-form");
+      if (form) {
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          const name = document.getElementById("name").value.trim();
+          const team = document.getElementById("team").value.trim();
+          const role = document.querySelector("input[name='role']:checked").value.trim();
+          const phone = document.getElementById("phone").value.trim();
+          if (!name || !phone) {
+            alert("Please fill in all required fields.");
+            return;
           }
-        };
-      };
-    })
-    .catch(err => console.error("Service Worker registration failed:", err));
-}
- //pop up
- 
-
-
-
-</script>
-<!-- Popup Modal -->
-<style>
-@keyframes fadeSlideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.animate-in {
-  animation: fadeSlideUp 0.6s ease forwards;
-}
-
-.fade-text {
-  transition: opacity 0.6s ease;
-  cursor: default;
-}
-
-.fade-text.link {
-  text-decoration: underline;
-  cursor: pointer;
-}
-</style>
-
-<div id="install-popup" style="
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1976D2;
-  color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 1000;
-  width: 90%;
-  max-width: 400px;
-  padding: 15px;
-  font-family: Arial, sans-serif;
-  text-align: center;
-">
-  <div id="altech-text" class="fade-text" style="
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 8px;
-    opacity: 0;
-  ">ALTECH</div>
-
-  <div id="popup-content" style="
-    margin-bottom: 10px;
-    opacity: 0;
-  ">
-    <strong>Get the Mumo Foundation App</strong>
-    <p style="margin: 5px 0 0;">Install the app for a better experience!</p>
-  </div>
-
-  <div id="popup-buttons" style="opacity: 0;">
-    <button id="install-btn" style="
-      background: #fff;
-      color: #1976D2;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 4px;
-      margin-right: 10px;
-      cursor: pointer;
-    ">Get App</button>
-
-    <button id="dismiss-btn" style="
-      background: transparent;
-      color: #fff;
-      border: 1px solid #fff;
-      padding: 8px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-    ">Already Have It</button>
-  </div>
-</div>
-
-<script>
-let deferredPrompt = null;
-
-// Listen for install prompt
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-
-// Show popup
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const popup = document.getElementById('install-popup');
-    const altech = document.getElementById('altech-text');
-    const content = document.getElementById('popup-content');
-    const buttons = document.getElementById('popup-buttons');
-
-    popup.style.display = 'block';
-
-    altech.style.animationDelay = '0s';
-    altech.classList.add('animate-in');
-
-    content.style.animationDelay = '0.2s';
-    content.classList.add('animate-in');
-
-    buttons.style.animationDelay = '0.4s';
-    buttons.classList.add('animate-in');
-
-    setTimeout(() => {
-      startAlternatingText();
-    }, 1000);
-  }, 3000);
-});
-
-// Get App button
-document.getElementById('install-btn').addEventListener('click', () => {
-  const popup = document.getElementById('install-popup');
-  popup.style.display = 'none';
-
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => {
-      deferredPrompt = null;
-    });
-  }
-  // If no deferredPrompt, just silently dismiss. Cannot force install on iOS.
-});
-
-// Already Have It button
-document.getElementById('dismiss-btn').addEventListener('click', () => {
-  document.getElementById('install-popup').style.display = 'none';
-});
-
-// Alternating text
-function startAlternatingText() {
-  const altech = document.getElementById('altech-text');
-  const messages = [
-    { text: "ALTECH", link: false },
-    { text: "Need a Website or App? Click here", link: true }
-  ];
-  let index = 0;
-
-  setInterval(() => {
-    altech.style.opacity = 0;
-    setTimeout(() => {
-      index = (index + 1) % messages.length;
-      altech.textContent = messages[index].text;
-
-      if (messages[index].link) {
-        altech.classList.add('link');
-        altech.onclick = () => {
-          window.open('https://altechit.netlify.app', '_blank');
-        };
-      } else {
-        altech.classList.remove('link');
-        altech.onclick = null;
+          const message = `Hello Mumo Foundation! 👋%0AI would like to join as a *${role}*.%0A*Name:* ${name}%0A${team ? `*Team:* ${team}%0A` : ""}*Phone:* ${phone}`;
+          window.open(`https://wa.me/254716868013?text=${message}`, "_blank");
+        });
       }
-
-      altech.style.opacity = 1;
-    }, 500);
-  }, 3000);
-}
-
-// ========== POCHI CONTRIBUTION FUNCTIONALITY ==========
-document.addEventListener('DOMContentLoaded', function() {
-  const pochiNumber = '0700881751';
-  
-  // Copy number functionality
-  document.getElementById('copyPochiBtn').addEventListener('click', function() {
-    navigator.clipboard.writeText(pochiNumber).then(function() {
-      showToast('✅ POCHI number copied!');
-    }).catch(function() {
-      // Fallback for older browsers
-      const textArea = document.createElement('textarea');
-      textArea.value = pochiNumber;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      showToast('✅ POCHI number copied!');
-    });
-  });
-  
-  // M-Pesa STK simulation / Open M-Pesa app
-  document.getElementById('mpesaStkBtn').addEventListener('click', function() {
-    // Try to open M-Pesa app via deep link
-    const mpesaAppUrl = 'mpesa://';
-    const safaricomAppUrl = 'safaricom://';
-    
-    // Create hidden iframe to attempt opening app
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = mpesaAppUrl;
-    document.body.appendChild(iframe);
-    
-    setTimeout(function() {
-      document.body.removeChild(iframe);
       
-      // Fallback - show instructions with option to dial USSD
-      showMpesaInstructions();
-    }, 500);
-    
-    // Also try safaricom app
-    window.location.href = safaricomAppUrl;
-  });
-  
-  // USSD Dial button
-  document.getElementById('ussdDialBtn').addEventListener('click', function() {
-    // Copy number first
-    navigator.clipboard.writeText(pochiNumber).catch(() => {});
-    
-    // Create tel link for USSD
-    const ussdCode = '*334%23';
-    window.location.href = 'tel:' + ussdCode;
-    
-    // Show instructions after a short delay
-    setTimeout(function() {
-      showDetailedInstructions();
-    }, 500);
-  });
-  
-  function showMpesaInstructions() {
-    const instructionHtml = `
-      <div style="position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); z-index:10000; display:flex; align-items:center; justify-content:center; padding:20px;" onclick="this.remove()">
-        <div style="background:white; border-radius:20px; padding:30px; max-width:400px; text-align:left;" onclick="event.stopPropagation()">
-          <h3 style="color:#1E5128; font-size:1.5rem; margin-bottom:15px;">
-            <i class="fas fa-mobile-alt mr-2"></i>M-Pesa POCHI Payment
-          </h3>
-          <p style="margin-bottom:15px;"><strong>Number:</strong> <span style="background:#f0f0f0; padding:5px 10px; border-radius:5px;">${pochiNumber}</span></p>
-          <ol style="list-style:decimal; padding-left:20px; margin-bottom:20px;">
-            <li style="margin-bottom:8px;">Dial <strong>*334#</strong> or open M-Pesa app</li>
-            <li style="margin-bottom:8px;">Select <strong>Option 6: Lipa na M-Pesa</strong></li>
-            <li style="margin-bottom:8px;">Select <strong>Option 3: POCHI</strong></li>
-            <li style="margin-bottom:8px;">Enter number: <strong>${pochiNumber}</strong></li>
-            <li style="margin-bottom:8px;">Enter amount and PIN to complete</li>
-          </ol>
-          <button onclick="this.closest('div').parentElement.remove()" style="background:#4E9F3D; color:white; border:none; padding:12px 25px; border-radius:10px; font-weight:600; width:100%;">Got it!</button>
-          <button onclick="window.location.href='tel:*334%23'" style="background:#2b2b2b; color:white; border:none; padding:12px 25px; border-radius:10px; font-weight:600; width:100%; margin-top:10px;">
-            <i class="fas fa-phone-alt mr-2"></i>Dial *334# Now
-          </button>
-        </div>
-      </div>
-    `;
-    
-    document.body.insertAdjacentHTML('beforeend', instructionHtml);
-  }
-  
-  function showDetailedInstructions() {
-    showMpesaInstructions();
-  }
-  
-  function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast-notification';
-    toast.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${message}`;
-    document.body.appendChild(toast);
-    
-    setTimeout(function() {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translate(-50%, 20px)';
-      toast.style.transition = 'all 0.3s ease';
-      setTimeout(function() {
-        document.body.removeChild(toast);
-      }, 300);
-    }, 2000);
-  }
-});
-</script>
+      // Initialize standings and fixtures
+      populateStandings();
+      generateFixtures();
+      startTournamentCountdown();
+    });
 
+    // Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => {
+          console.log("Service Worker registered for Mumo Foundation.");
+          reg.onupdatefound = () => {
+            const newWorker = reg.installing;
+            newWorker.onstatechange = () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                alert('New content is available. Please reload to update.');
+              }
+            };
+          };
+        })
+        .catch(err => console.error("Service Worker registration failed:", err));
+    }
+  </script>
+
+  <!-- Popup Modal -->
+  <style>
+  @keyframes fadeSlideUp {
+    0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .animate-in { animation: fadeSlideUp 0.6s ease forwards; }
+  .fade-text { transition: opacity 0.6s ease; cursor: default; }
+  .fade-text.link { text-decoration: underline; cursor: pointer; }
+  </style>
+
+  <div id="install-popup" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #1976D2; color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1000; width: 90%; max-width: 400px; padding: 15px; font-family: Arial, sans-serif; text-align: center;">
+    <div id="altech-text" class="fade-text" style="font-weight: bold; font-size: 14px; margin-bottom: 8px; opacity: 0;">ALTECH</div>
+    <div id="popup-content" style="margin-bottom: 10px; opacity: 0;">
+      <strong>Get the Mumo Foundation App</strong>
+      <p style="margin: 5px 0 0;">Install the app for a better experience!</p>
+    </div>
+    <div id="popup-buttons" style="opacity: 0;">
+      <button id="install-btn" style="background: #fff; color: #1976D2; border: none; padding: 8px 12px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Get App</button>
+      <button id="dismiss-btn" style="background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 12px; border-radius: 4px; cursor: pointer;">Already Have It</button>
+    </div>
+  </div>
+
+  <script>
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const popup = document.getElementById('install-popup');
+      const altech = document.getElementById('altech-text');
+      const content = document.getElementById('popup-content');
+      const buttons = document.getElementById('popup-buttons');
+      popup.style.display = 'block';
+      altech.style.animationDelay = '0s';
+      altech.classList.add('animate-in');
+      content.style.animationDelay = '0.2s';
+      content.classList.add('animate-in');
+      buttons.style.animationDelay = '0.4s';
+      buttons.classList.add('animate-in');
+      setTimeout(() => { startAlternatingText(); }, 1000);
+    }, 3000);
+  });
+  document.getElementById('install-btn').addEventListener('click', () => {
+    document.getElementById('install-popup').style.display = 'none';
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+    }
+  });
+  document.getElementById('dismiss-btn').addEventListener('click', () => {
+    document.getElementById('install-popup').style.display = 'none';
+  });
+  function startAlternatingText() {
+    const altech = document.getElementById('altech-text');
+    const messages = [
+      { text: "ALTECH", link: false },
+      { text: "Need a Website or App? Click here", link: true }
+    ];
+    let index = 0;
+    setInterval(() => {
+      altech.style.opacity = 0;
+      setTimeout(() => {
+        index = (index + 1) % messages.length;
+        altech.textContent = messages[index].text;
+        if (messages[index].link) {
+          altech.classList.add('link');
+          altech.onclick = () => { window.open('https://altechit.netlify.app', '_blank'); };
+        } else {
+          altech.classList.remove('link');
+          altech.onclick = null;
+        }
+        altech.style.opacity = 1;
+      }, 500);
+    }, 3000);
+  }
+  </script>
 </body>
 </html>
