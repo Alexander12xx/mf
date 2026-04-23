@@ -695,62 +695,527 @@
   </section>
 
 <!-- Upcoming Matches Section -->
-<section class="py-16 bg-gray-100 dark:bg-gray-900">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">
-      Tournament Matches - April 26, 2026
-    </h2>
-    <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
-      <i class="fas fa-map-marker-alt mr-2"></i>Kabaa Grounds
-    </p>
-
-    <!-- Pool A -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4 text-gray-700 dark:text-gray-300 border-b pb-2">Pool A</h3>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kibau FC vs Muvwana FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kabaa Young Cobras vs Masawa</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Muvwana FC vs Masawa FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kabaa Young Cobras vs Muvwana FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Masawa FC vs Kibau FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kabaa Young Cobras vs Kibau FC</div>
+<section class="py-16 relative overflow-hidden" style="background-image: url('https://www.transparenttextures.com/patterns/grass.png'), linear-gradient(135deg, #1a472a 0%, #2d6a4f 100%);">
+  <!-- Soccer field overlay -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background: repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(255,255,255,0.05) 50px, rgba(255,255,255,0.05) 100px);"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <div class="flex justify-center mb-6">
+        <div class="relative">
+          <div class="absolute -left-4 -right-4 h-full bg-yellow-500/20 blur-2xl rounded-full"></div>
+          <i class="fas fa-futbol text-5xl text-yellow-400 animate-spin-slow"></i>
+        </div>
+      </div>
+      <div class="inline-flex items-center gap-2 bg-black/40 backdrop-blur-sm px-6 py-2 rounded-full border border-yellow-500/30 mb-4">
+        <i class="fas fa-trophy text-yellow-400 text-sm"></i>
+        <span class="text-yellow-300 font-semibold tracking-widest text-sm">KABAA CUP 2026</span>
+        <i class="fas fa-trophy text-yellow-400 text-sm"></i>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black mb-4 text-white drop-shadow-lg">
+        MATCH FIXTURES
+      </h2>
+      <div class="flex items-center justify-center gap-4">
+        <div class="h-px w-12 bg-yellow-500/50"></div>
+        <div class="flex items-center text-white/90 bg-black/30 backdrop-blur-sm px-5 py-2 rounded-full">
+          <i class="far fa-calendar-alt text-yellow-400 mr-2"></i>
+          <span class="font-semibold">April 26, 2026</span>
+        </div>
+        <div class="h-px w-12 bg-yellow-500/50"></div>
+      </div>
+      <div class="mt-4 flex items-center justify-center">
+        <div class="bg-black/40 backdrop-blur-sm px-5 py-2 rounded-full inline-flex items-center">
+          <i class="fas fa-map-pin text-red-400 mr-2"></i>
+          <span class="text-white/90 font-medium">Kabaa Grounds</span>
+        </div>
       </div>
     </div>
 
-    <!-- Pool B -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4 text-gray-700 dark:text-gray-300 border-b pb-2">Pool B</h3>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Talons FC vs Kwa Mutula FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Mohre FC vs Talons FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kwa Mutula FC vs Mohre FC</div>
+    <!-- Pools Grid -->
+    <div class="grid gap-8 lg:grid-cols-2">
+      
+      <!-- Pool A -->
+      <div class="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-red-700 to-red-600 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">A</span>
+              <h3 class="text-white font-bold text-xl tracking-wide">GROUP A</h3>
+            </div>
+            <div class="flex gap-1">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="space-y-3">
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kibau FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Muvwana FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kabaa Young Cobras</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Masawa</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Muvwana FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Masawa FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kabaa Young Cobras</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Muvwana FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Masawa FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Kibau FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kabaa Young Cobras</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Kibau FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pool B -->
+      <div class="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-700 to-blue-600 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">B</span>
+              <h3 class="text-white font-bold text-xl tracking-wide">GROUP B</h3>
+            </div>
+            <div class="flex gap-1">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="space-y-3">
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Talons FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Kwa Mutula FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-pink-500 to-pink-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Mohre FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Talons FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kwa Mutula FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Mohre FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-pink-500 to-pink-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pool C -->
+      <div class="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-green-700 to-green-600 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">C</span>
+              <h3 class="text-white font-bold text-xl tracking-wide">GROUP C</h3>
+            </div>
+            <div class="flex gap-1">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="space-y-3">
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kimangu FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Kyenguli FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Ulaani Youth FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Mbiuni FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kimangu</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Ulaani FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Ulaani Youth FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Kyenguli Legends</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kimangu FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Mbiuni FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kyenguli Legends</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Mbiuni FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pool D -->
+      <div class="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 shadow-2xl overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-700 to-purple-600 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold text-lg">D</span>
+              <h3 class="text-white font-bold text-xl tracking-wide">GROUP D</h3>
+            </div>
+            <div class="flex gap-1">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+              <span class="w-2 h-2 bg-yellow-400/60 rounded-full"></span>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="space-y-3">
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kimuuni FC</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">FC Talanta</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-rose-500 to-rose-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">Kyenguli Legends</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Kimuuni FC</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-slate-500 to-slate-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="match-card bg-black/20 rounded-xl p-4 border border-white/10 hover:border-yellow-500/50 transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3 flex-1">
+                  <div class="w-8 h-8 bg-gradient-to-br from-rose-500 to-rose-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                  <span class="text-white font-semibold">FC Talanta</span>
+                </div>
+                <div class="px-4">
+                  <span class="text-yellow-400 font-bold text-lg">VS</span>
+                </div>
+                <div class="flex items-center gap-3 flex-1 justify-end">
+                  <span class="text-white font-semibold">Kyenguli Legends</span>
+                  <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-full flex items-center justify-center shadow-lg">
+                    <i class="fas fa-shield-alt text-white text-xs"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Pool C -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4 text-gray-700 dark:text-gray-300 border-b pb-2">Pool C</h3>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kimangu FC vs Kyenguli FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Ulaani Youth FC vs Mbiuni FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kimangu vs Ulaani FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Ulaani Youth FC vs Kyenguli Legends</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kimangu FC vs Mbiuni FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kyenguli Legends vs Mbiuni FC</div>
-      </div>
-    </div>
-
-    <!-- Pool D -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4 text-gray-700 dark:text-gray-300 border-b pb-2">Pool D</h3>
-      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kimuuni FC vs FC Talanta</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">Kyenguli Legends vs Kimuuni FC</div>
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">FC Talanta vs Kyenguli Legends</div>
-      </div>
+    <!-- Footer note -->
+    <div class="mt-10 text-center">
+      <p class="text-white/60 text-sm flex items-center justify-center gap-2">
+        <i class="fas fa-whistle text-yellow-400"></i>
+        <span>All matches to be played at Kabaa Grounds</span>
+        <i class="fas fa-whistle text-yellow-400"></i>
+      </p>
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+  .match-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .match-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transition: left 0.5s;
+  }
+  .match-card:hover::before {
+    left: 100%;
+  }
+  </style>
 
   <!-- Live Matches Section -->
   <section class="matches-section py-16 bg-gray-900 text-gray-100" style="width: 100%;">
